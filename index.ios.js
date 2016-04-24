@@ -1,16 +1,17 @@
-'use strict';
-
-var React = require('react-native');
-var {
+import React, {
   AppRegistry,
+  Component,
   StyleSheet,
-  TabBarIOS,
-  Component
-} = React;
+  TabBarIOS
+} from 'react-native';
+
+var HockeyApp = require('react-native-hockeyapp');
 
 var ScorecardsListView = require('./views/ScorecardsListView');
 var SummariesView      = require('./views/SummariesView');
 var StartPlayView      = require('./views/StartPlayView');
+
+const Icon = require('react-native-vector-icons/Ionicons');
 
 class Golftracker extends Component{
   constructor(props) {
@@ -20,16 +21,26 @@ class Golftracker extends Component{
     };
   }
 
+  componentWillMount() {
+    HockeyApp.configure('837f6989a592474bbe58cedf32e47839', true);
+  }
+
+  componentDidMount() {
+    HockeyApp.start();
+    HockeyApp.checkForUpdate();
+    HockeyApp.feedback();
+  }
+
   render() {
     return (
       <TabBarIOS
         selectedTab={this.state.selectedTab}
         tintColor={'#000'}
         barTintColor={'#E7ECEE'}>
-        <TabBarItemIOS
+        <Icon.TabBarItem
           selected={this.state.selectedTab === 'summaries'}
-          name='summaries'
-          iconName={'ion|ios-analytics-outline'}
+          title='summaries'
+          iconName='ios-analytics-outline'
           title='Summaries'
           iconSize={32}
           onPress={() => {
@@ -38,12 +49,12 @@ class Golftracker extends Component{
             });
           }}>
           <SummariesView />
-        </TabBarItemIOS>
+        </Icon.TabBarItem>
 
-        <TabBarItemIOS
+        <Icon.TabBarItem
           selected={this.state.selectedTab === 'scorecards'}
-          name='scorecards'
-          iconName={'ion|ios-list-outline'}
+          title='scorecards'
+          iconName='ios-list-outline'
           title='Scorecards'
           iconSize={32}
           onPress={() => {
@@ -52,12 +63,12 @@ class Golftracker extends Component{
             });
           }}>
           <ScorecardsListView />
-        </TabBarItemIOS>
+        </Icon.TabBarItem>
 
-        <TabBarItemIOS
+        <Icon.TabBarItem
           selected={this.state.selectedTab === 'play'}
-          name='play'
-          iconName={'ion|ios-play-outline'}
+          title='play'
+          iconName='ios-play-outline'
           title='Play'
           iconSize={32}
           onPress={() => {
@@ -66,13 +77,13 @@ class Golftracker extends Component{
             });
           }}>
           <StartPlayView />
-        </TabBarItemIOS>
+        </Icon.TabBarItem>
       </TabBarIOS>
     );
   }
 }
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   app: {
     flex: 1
   }
