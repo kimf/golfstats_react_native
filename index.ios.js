@@ -1,72 +1,59 @@
 import React, { Component } from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  TabBarIOS
-} from 'react-native';
+import { AppRegistry, StyleSheet } from 'react-native';
+import { Tabs, Tab, Icon } from 'react-native-elements'
 
 var ScorecardsListView = require('./views/ScorecardsListView');
 var SummariesView      = require('./views/SummariesView');
 var StartPlayView      = require('./views/StartPlayView');
 
-const Icon = require('react-native-vector-icons/Ionicons');
-
 class Golftracker extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'play'
+      selectedTab: 'summaries'
     };
   }
 
+  changeTab (selectedTab) {
+    this.setState({selectedTab})
+  }
+
+
   render() {
+    const { selectedTab } = this.state
+
     return (
-      <TabBarIOS
-        selectedTab={this.state.selectedTab}
-        tintColor={'#000'}
-        barTintColor={'#E7ECEE'}>
-        <Icon.TabBarItem
-          selected={this.state.selectedTab === 'summaries'}
-          title='summaries'
-          iconName='ios-analytics-outline'
-          title='Summaries'
-          iconSize={32}
-          onPress={() => {
-            this.setState({
-                selectedTab: 'summaries',
-            });
-          }}>
+      <Tabs>
+        <Tab
+          titleStyle={[styles.titleStyle]}
+          selectedTitleStyle={[styles.titleSelected]}
+          selected={selectedTab === 'summaries'}
+          title='SUMMARIES'
+          renderIcon={() => <Icon name='ios-analytics-outline' type='ionicon' size={26} />}
+          onPress={() => this.changeTab('summaries')}>
           <SummariesView />
-        </Icon.TabBarItem>
+        </Tab>
 
-        <Icon.TabBarItem
-          selected={this.state.selectedTab === 'scorecards'}
-          title='scorecards'
-          iconName='ios-list-outline'
-          title='Scorecards'
-          iconSize={32}
-          onPress={() => {
-            this.setState({
-                selectedTab: 'scorecards',
-            });
-          }}>
+        <Tab
+          titleStyle={[styles.titleStyle]}
+          selectedTitleStyle={[styles.titleSelected]}
+          selected={selectedTab === 'scorecards'}
+          title='SCORECARDS'
+          renderIcon={() => <Icon name='ios-list-outline' type='ionicon' size={26} />}
+          onPress={() => this.changeTab('scorecards')}>
           <ScorecardsListView />
-        </Icon.TabBarItem>
+        </Tab>
 
-        <Icon.TabBarItem
-          selected={this.state.selectedTab === 'play'}
-          title='play'
-          iconName='ios-play-outline'
-          title='Play'
-          iconSize={32}
-          onPress={() => {
-            this.setState({
-                selectedTab: 'play',
-            });
-          }}>
+        <Tab
+          titleStyle={[styles.titleStyle]}
+          selectedTitleStyle={[styles.titleSelected]}
+          selected={selectedTab === 'play'}
+          title='PLAY GOLF'
+          renderIcon={() => <Icon name='ios-play-outline' type='ionicon' size={26} />}
+          onPress={() => this.changeTab('play')}>
           <StartPlayView />
-        </Icon.TabBarItem>
-      </TabBarIOS>
+        </Tab>
+      </Tabs>
     );
   }
 }
@@ -74,7 +61,12 @@ class Golftracker extends Component{
 const styles = StyleSheet.create({
   app: {
     flex: 1
-  }
+  },
+  titleStyle: {
+    fontWeight: 'bold',
+    color: '#777'
+  },
+  titleSelected: {}
 });
 
 AppRegistry.registerComponent('Golftracker', () => Golftracker);
