@@ -1,12 +1,6 @@
 'use strict';
-
-var React = require('react-native');
-var {
-  ListView,
-  StyleSheet,
-  Text,
-  View,
-} = React;
+import React, { Component } from 'react';
+import { StyleSheet, ListView, Text, View } from 'react-native';
 
 var _ = require('lodash');
 var moment = require('moment');
@@ -15,7 +9,7 @@ var LoadingScreen = require('./LoadingScreen');
 var ScorecardDetailView = require('./ScorecardDetailView');
 var ScorecardRow = require('../components/ScorecardRow');
 
-var REQUEST_URL = 'http://golfstats.fransman.se/scorecards?year=2015';
+var REQUEST_URL = 'http://golfstats.fransman.se/scorecards';
 //var REQUEST_URL = 'http://localhost:9292/scorecards?year=2015';
 
 var sectionIDs = [];

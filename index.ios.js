@@ -1,11 +1,9 @@
-import React, {
+import React, { Component } from 'react';
+import {
   AppRegistry,
-  Component,
   StyleSheet,
   TabBarIOS
 } from 'react-native';
-
-var HockeyApp = require('react-native-hockeyapp');
 
 var ScorecardsListView = require('./views/ScorecardsListView');
 var SummariesView      = require('./views/SummariesView');
@@ -19,16 +17,6 @@ class Golftracker extends Component{
     this.state = {
       selectedTab: 'play'
     };
-  }
-
-  componentWillMount() {
-    HockeyApp.configure('837f6989a592474bbe58cedf32e47839', true);
-  }
-
-  componentDidMount() {
-    HockeyApp.start();
-    HockeyApp.checkForUpdate();
-    HockeyApp.feedback();
   }
 
   render() {

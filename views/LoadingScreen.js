@@ -1,11 +1,6 @@
 'use strict';
-
-var React = require('react-native');
-var {
-  StyleSheet,
-  Text,
-  View,
-} = React;
+import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 var LoadingScreen = React.createClass({
   render: function() {

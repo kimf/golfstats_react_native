@@ -1,11 +1,6 @@
 'use strict';
-
-var React = require('react-native');
-var {
-  StyleSheet,
-  View,
-  NavigatorIOS
-} = React;
+import React, { Component } from 'react';
+import { StyleSheet, View, NavigatorIOS } from 'react-native';
 
 var SelectCourseView = require('./SelectCourseView');
 

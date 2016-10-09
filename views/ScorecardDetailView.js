@@ -1,11 +1,6 @@
 'use strict';
-
-var React = require('react-native');
-var {
-  StyleSheet,
-  ScrollView
-} = React;
-
+import React, { Component } from 'react';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
 var Panel = require('../components/Panel');
 
 var ScorecardScreen = React.createClass({

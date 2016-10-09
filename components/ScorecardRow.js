@@ -1,12 +1,8 @@
 'use strict';
 
-var React = require('react-native');
-var {
-  StyleSheet,
-  TouchableHighlight,
-  Text,
-  View,
-} = React;
+import React, { Component, PropType } from 'react';
+import { StyleSheet, TouchableHighlight, Text, View } from 'react-native';
+
 
 var MetaHeader = require('./MetaHeader');
 var ScoreRow = require('./ScoreRow');

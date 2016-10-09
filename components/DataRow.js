@@ -1,8 +1,7 @@
 'use strict';
 
-var React = require('react-native');
-
-var { Component, StyleSheet, View, Text, PropType } = React;
+import React, { Component, PropType } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 var SquareChart = require('./SquareChart');
 

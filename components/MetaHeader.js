@@ -1,9 +1,7 @@
 'use strict';
 
-var React = require('react-native');
-
-var { StyleSheet, View, Text, PropType } = React;
-
+import React, { Component, PropType } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 class MetaHeader extends View {
 

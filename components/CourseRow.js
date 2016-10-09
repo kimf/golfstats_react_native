@@ -1,12 +1,7 @@
 'use strict';
 
-var React = require('react-native');
-var {
-  StyleSheet,
-  TouchableHighlight,
-  Text,
-  View,
-} = React;
+import React, { Component, PropType } from 'react';
+import { StyleSheet, TouchableHighlight, Text, View } from 'react-native';
 
 var CourseRow = React.createClass({
   underlayColor: function() {
@@ -30,7 +25,7 @@ var styles = StyleSheet.create({
     backgroundColor: '#E7ECEE',
     flexDirection: 'column',
     marginBottom: 5,
-    padding: 10    
+    padding: 10
   }
 });
 

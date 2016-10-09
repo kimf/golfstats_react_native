@@ -114,13 +114,6 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
-		977940F01CCD152D00D43E19 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 977940EA1CCD152D00D43E19 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EAFFA659065CF432E2473A3E3FAF5662;
-			remoteInfo = "HockeySDK-HockeySDKResources";
-		};
 		977940F21CCD152D00D43E19 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 977940EA1CCD152D00D43E19 /* Pods.xcodeproj */;
@@ -174,8 +167,6 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		83BBE3906325B6616644FA65 /* Pods_Golftracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Golftracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		970998291CCD1F1800FB90D7 /* RNHockeyApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNHockeyApp.h; path = "../node_modules/react-native-hockeyapp/RNHockeyApp/RNHockeyApp.h"; sourceTree = "<group>"; };
-		9709982A1CCD1F1800FB90D7 /* RNHockeyApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNHockeyApp.m; path = "../node_modules/react-native-hockeyapp/RNHockeyApp/RNHockeyApp.m"; sourceTree = "<group>"; };
 		977940EA1CCD152D00D43E19 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		A4273E2A7365014AC7577C74 /* Pods_GolftrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GolftrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFA17CA6980B582A7D1B437B /* Pods-GolftrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GolftrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GolftrackerTests/Pods-GolftrackerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -392,7 +383,6 @@
 		977940EB1CCD152D00D43E19 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				977940F11CCD152D00D43E19 /* HockeySDKResources.bundle */,
 				977940F31CCD152D00D43E19 /* Pods_Golftracker.framework */,
 				977940F51CCD152D00D43E19 /* Pods_GolftrackerTests.framework */,
 			);
@@ -434,12 +424,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "GolftrackerTests" */;
 			buildPhases = (
-				FB1118136931070DF60BD6C6 /* 📦 Check Pods Manifest.lock */,
+				FB1118136931070DF60BD6C6 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				75A4674327E4908182108C53 /* 📦 Embed Pods Frameworks */,
-				56B7699564D36D0C4A0A08E8 /* 📦 Copy Pods Resources */,
+				75A4674327E4908182108C53 /* [CP] Embed Pods Frameworks */,
+				56B7699564D36D0C4A0A08E8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -455,13 +445,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Golftracker" */;
 			buildPhases = (
-				84A3035C5D17308E072A05A7 /* 📦 Check Pods Manifest.lock */,
+				84A3035C5D17308E072A05A7 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				232BDA05CF0473B0A2A2BADA /* 📦 Embed Pods Frameworks */,
-				47B2287AAA20748A5889D6D6 /* 📦 Copy Pods Resources */,
+				232BDA05CF0473B0A2A2BADA /* [CP] Embed Pods Frameworks */,
+				47B2287AAA20748A5889D6D6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -627,13 +617,6 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		977940F11CCD152D00D43E19 /* HockeySDKResources.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = HockeySDKResources.bundle;
-			remoteRef = 977940F01CCD152D00D43E19 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		977940F31CCD152D00D43E19 /* Pods_Golftracker.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -699,14 +682,14 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/packager/react-native-xcode.sh";
 		};
-		232BDA05CF0473B0A2A2BADA /* 📦 Embed Pods Frameworks */ = {
+		232BDA05CF0473B0A2A2BADA /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -714,14 +697,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Golftracker/Pods-Golftracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		47B2287AAA20748A5889D6D6 /* 📦 Copy Pods Resources */ = {
+		47B2287AAA20748A5889D6D6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,14 +712,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Golftracker/Pods-Golftracker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		56B7699564D36D0C4A0A08E8 /* 📦 Copy Pods Resources */ = {
+		56B7699564D36D0C4A0A08E8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -744,14 +727,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GolftrackerTests/Pods-GolftrackerTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		75A4674327E4908182108C53 /* 📦 Embed Pods Frameworks */ = {
+		75A4674327E4908182108C53 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -759,14 +742,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GolftrackerTests/Pods-GolftrackerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		84A3035C5D17308E072A05A7 /* 📦 Check Pods Manifest.lock */ = {
+		84A3035C5D17308E072A05A7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,14 +757,14 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FB1118136931070DF60BD6C6 /* 📦 Check Pods Manifest.lock */ = {
+		FB1118136931070DF60BD6C6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

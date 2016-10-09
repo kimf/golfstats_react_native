@@ -1,11 +1,7 @@
 'use strict';
+import React, { Component, PropType } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-var React = require('react-native');
-var {
-  StyleSheet,
-  Text,
-  View,
-} = React;
 
 var Panel = React.createClass({
   render: function() {

@@ -1,18 +1,12 @@
 'use strict';
 
-var React = require('react-native');
-var {
-  StyleSheet,
-  ListView,
-  Component,
-  View,
-  Text
-} = React;
+import React, { Component } from 'react';
+import { StyleSheet, ListView, Text, View } from 'react-native';
 
 var LoadingScreen = require('./LoadingScreen');
 var CourseRow = require('../components/CourseRow');
 
-var REQUEST_URL = 'http://golfstats.fransman.se/clubs';
+var REQUEST_URL = 'http://golfstats.fransman.se/tisdagsgolfendata';
 
 class SelectCourseView extends View{
 
@@ -31,7 +25,7 @@ class SelectCourseView extends View{
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData.courses),
+          dataSource: this.state.dataSource.cloneWithRows(responseData.clubs),
           loaded: true,
         });
       })
