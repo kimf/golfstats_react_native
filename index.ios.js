@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { AppRegistry, StyleSheet } from 'react-native';
 import { Tabs, Tab, Icon } from 'react-native-elements'
 
-var ScorecardsListView = require('./views/ScorecardsListView');
-var SummariesView      = require('./views/SummariesView');
-var StartPlayView      = require('./views/StartPlayView');
+import ScorecardsListView from './views/ScorecardsListView'
+import SummariesView from './views/SummariesView'
+import PlayView from './views/PlayView'
 
 class Golftracker extends Component{
   constructor(props) {
@@ -20,7 +20,7 @@ class Golftracker extends Component{
 
 
   render() {
-    const { selectedTab } = this.state
+    const { selectedTab } = this.state;
 
     return (
       <Tabs>
@@ -30,6 +30,7 @@ class Golftracker extends Component{
           selected={selectedTab === 'summaries'}
           title='SUMMARIES'
           renderIcon={() => <Icon name='ios-analytics-outline' type='ionicon' size={26} />}
+          renderSelectedIcon={() => <Icon name='ios-analytics' type='ionicon' size={26} />}
           onPress={() => this.changeTab('summaries')}>
           <SummariesView />
         </Tab>
@@ -39,7 +40,8 @@ class Golftracker extends Component{
           selectedTitleStyle={[styles.titleSelected]}
           selected={selectedTab === 'scorecards'}
           title='SCORECARDS'
-          renderIcon={() => <Icon name='ios-list-outline' type='ionicon' size={26} />}
+          renderIcon={() => <Icon name='ios-list-box-outline' type='ionicon' size={26} />}
+          renderSelectedIcon={() => <Icon name='ios-list-box' type='ionicon' size={26} />}
           onPress={() => this.changeTab('scorecards')}>
           <ScorecardsListView />
         </Tab>
@@ -50,8 +52,9 @@ class Golftracker extends Component{
           selected={selectedTab === 'play'}
           title='PLAY GOLF'
           renderIcon={() => <Icon name='ios-play-outline' type='ionicon' size={26} />}
+          renderSelectedIcon={() => <Icon name='ios-play' type='ionicon' size={26} />}
           onPress={() => this.changeTab('play')}>
-          <StartPlayView />
+          <PlayView />
         </Tab>
       </Tabs>
     );

@@ -98,16 +98,23 @@ var ScorecardsListView = React.createClass({
     }
 
     return (
-      <ListView
-        style={styles.listview}
-        dataSource={this.state.dataSource}
-        onChangeVisibleRows={(visibleRows, changedRows) => console.log('rowHasChanged')}
-        renderSectionHeader={this.renderSectionHeader}
-        renderRow={this.renderRow}
-        initialListSize={10}
-        pageSize={4}
-        scrollRenderAheadDistance={2000}
-      />
+      <View>
+        <View style={styles.header}>
+          <Text style={[styles.text, styles.headerText]}>
+            Scorecards
+          </Text>
+        </View>
+        <ListView
+          style={styles.listview}
+          dataSource={this.state.dataSource}
+          onChangeVisibleRows={(visibleRows, changedRows) => console.log('rowHasChanged')}
+          renderSectionHeader={this.renderSectionHeader}
+          renderRow={this.renderRow}
+          initialListSize={10}
+          pageSize={4}
+          scrollRenderAheadDistance={2000}
+        />
+      </View>
     );
   },
 
@@ -142,7 +149,21 @@ var styles = StyleSheet.create({
     alignItems: 'flex-start',
     padding: 6,
     backgroundColor: '#73797C',
-  }
+  },
+  header: {
+    height: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#000',
+    flexDirection: 'row',
+  },
+  headerText: {
+    color: '#fff'
+  },
+  page: {
+    flex: 1,
+    paddingTop: 64,
+   },
 });
 
 module.exports = ScorecardsListView;

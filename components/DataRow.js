@@ -1,9 +1,9 @@
 'use strict';
 
-import React, { Component, PropType } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component, PropType } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
-var SquareChart = require('./SquareChart');
+import SquareChart from './SquareChart'
 
 var eagle_color = '#d8c32a';
 var birdie_color = '#d83a29';
