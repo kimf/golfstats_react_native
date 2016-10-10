@@ -9,6 +9,7 @@
 
 #import "AppDelegate.h"
 
+#import "RCTBundleURLProvider.h"
 #import "RCTRootView.h"
 
 @implementation AppDelegate
@@ -27,13 +28,17 @@
      jsCodeLocation = [NSURL URLWithString:@"http://calces.local:8081/index.ios.bundle?platform=ios&dev=true"];
    #endif
  #else
-   jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+    jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
    // jsCodeLocation = [CodePush bundleURL];
  #endif
+
+
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"Golftracker"
                                                initialProperties:nil
                                                    launchOptions:launchOptions];
+
+  rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
