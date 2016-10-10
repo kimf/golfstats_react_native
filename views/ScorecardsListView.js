@@ -107,7 +107,6 @@ var ScorecardsListView = React.createClass({
         <ListView
           style={styles.listview}
           dataSource={this.state.dataSource}
-          onChangeVisibleRows={(visibleRows, changedRows) => console.log('rowHasChanged')}
           renderSectionHeader={this.renderSectionHeader}
           renderRow={this.renderRow}
           initialListSize={10}

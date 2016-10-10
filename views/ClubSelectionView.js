@@ -3,6 +3,7 @@
 import React, { Component, PropTypes } from 'react'
 import { StyleSheet, Text, ListView, View} from 'react-native'
 import { List, ListItem, SearchBar } from 'react-native-elements'
+import { Actions } from 'react-native-router-flux'
 
 import LoadingScreen from '../views/LoadingScreen'
 import CourseSelectionView from './CourseSelectionView'
@@ -10,11 +11,6 @@ import CourseSelectionView from './CourseSelectionView'
 var REQUEST_URL = 'http://golfstats.fransman.se/tisdagsgolfendata'
 
 class ClubSelectionView extends Component{
-  static propTypes = {
-    title: PropTypes.string,
-    navigator: PropTypes.object.isRequired,
-  }
-
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -27,7 +23,6 @@ class ClubSelectionView extends Component{
     this.renderRow = this.renderRow.bind(this);
     this.fetchData = this.fetchData.bind(this);
     this.searchClub = this.searchClub.bind(this);
-    this.selectRow = this.selectRow.bind(this);
   }
 
 
@@ -54,21 +49,13 @@ class ClubSelectionView extends Component{
     this.setState({dataSource: this.state.dataSource.cloneWithRows(searchResults)});
   }
 
-  selectRow(club) {
-    this.props.navigator.push({
-      title: `Choose a course`,
-      component: CourseSelectionView,
-      passProps: {club}
-    });
-  }
-
   renderRow (rowData, sectionID) {
     return (
       <ListItem
         key={sectionID}
         title={rowData.name}
         subtitle={`${rowData.courses.length} Banor`}
-        onPress={() => this.selectRow(rowData)}
+        onPress={() => Actions.chooseCourse({club: rowData})}
       />
     )
   }
@@ -77,12 +64,7 @@ class ClubSelectionView extends Component{
     if(!this.state.loaded) { return <LoadingScreen/>; }
 
     return (
-      <View>
-        <View style={styles.header}>
-          <Text style={[styles.text, styles.headerText]}>
-            Choose Club
-          </Text>
-        </View>
+      <View style={styles.page}>
         <SearchBar
           lightTheme
           onChangeText={(query) => this.searchClub(query)}
@@ -108,13 +90,6 @@ var styles = StyleSheet.create({
   listview: {
     backgroundColor: '#F5FBFD',
   },
-  header: {
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#3B5998',
-    flexDirection: 'row'
-  },
   text: {
     color: 'black',
     fontWeight: 'bold',
@@ -125,10 +100,7 @@ var styles = StyleSheet.create({
   page: {
     flex: 1,
     paddingTop: 64,
-   },
-  headerText: {
-    color: '#fff'
-  }
+   }
 });
 
 module.exports = ClubSelectionView;

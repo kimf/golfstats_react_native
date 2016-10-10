@@ -1,62 +1,78 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet } from 'react-native';
-import { Tabs, Tab, Icon } from 'react-native-elements'
+import { AppRegistry, StyleSheet, View, Text } from 'react-native';
+import { Icon } from 'react-native-elements'
+
+import {Router, Scene, Modal, Reducer} from 'react-native-mobx';
 
 import ScorecardsListView from './views/ScorecardsListView'
 import SummariesView from './views/SummariesView'
-import PlayView from './views/PlayView'
+import ClubSelectionView from './views/ClubSelectionView'
+import CourseSelectionView from './views/CourseSelectionView'
+import RoundView from './views/RoundView'
+
+
+const reducerCreate = params=>{
+    const defaultReducer = Reducer(params);
+    return (state, action)=>{
+        console.log("ACTION:", action);
+        return defaultReducer(state, action);
+    }
+};
+
+
+const TabBarIcon = (props) => {
+  const { selected, sceneKey, title } = props
+  let icon = ''
+  switch (sceneKey) {
+    case 'summaries':
+      icon = selected ? 'ios-analytics' : 'ios-analytics-outline'
+      break;
+    case 'scorecards':
+      icon = selected ? 'ios-list-box' : 'ios-list-box-outline'
+      break;
+    case 'play':
+      icon = selected ? 'ios-play' : 'ios-play-outline'
+      break;
+  }
+  return (
+    <View>
+      <Icon name={icon} type='ionicon' size={26} />
+      <Text style={{color: selected ? 'red' :'black'}}>{title}</Text>
+    </View>
+  );
+}
 
 class Golftracker extends Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedTab: 'summaries'
-    };
-  }
-
-  changeTab (selectedTab) {
-    this.setState({selectedTab})
-  }
-
-
   render() {
-    const { selectedTab } = this.state;
-
     return (
-      <Tabs>
-        <Tab
-          titleStyle={[styles.titleStyle]}
-          selectedTitleStyle={[styles.titleSelected]}
-          selected={selectedTab === 'summaries'}
-          title='SUMMARIES'
-          renderIcon={() => <Icon name='ios-analytics-outline' type='ionicon' size={26} />}
-          renderSelectedIcon={() => <Icon name='ios-analytics' type='ionicon' size={26} />}
-          onPress={() => this.changeTab('summaries')}>
-          <SummariesView />
-        </Tab>
-
-        <Tab
-          titleStyle={[styles.titleStyle]}
-          selectedTitleStyle={[styles.titleSelected]}
-          selected={selectedTab === 'scorecards'}
-          title='SCORECARDS'
-          renderIcon={() => <Icon name='ios-list-box-outline' type='ionicon' size={26} />}
-          renderSelectedIcon={() => <Icon name='ios-list-box' type='ionicon' size={26} />}
-          onPress={() => this.changeTab('scorecards')}>
-          <ScorecardsListView />
-        </Tab>
-
-        <Tab
-          titleStyle={[styles.titleStyle]}
-          selectedTitleStyle={[styles.titleSelected]}
-          selected={selectedTab === 'play'}
-          title='PLAY GOLF'
-          renderIcon={() => <Icon name='ios-play-outline' type='ionicon' size={26} />}
-          renderSelectedIcon={() => <Icon name='ios-play' type='ionicon' size={26} />}
-          onPress={() => this.changeTab('play')}>
-          <PlayView />
-        </Tab>
-      </Tabs>
+      <Router createReducer={reducerCreate}>
+        <Scene key="modal" component={Modal} >
+          <Scene key="root" tabs tabBarStyle={styles.tabBar}>
+            <Scene
+              key="summaries"
+              component={SummariesView}
+              title="Summaries"
+              icon={TabBarIcon}
+              titleStyle={styles.titleStyle}
+              initial />
+            <Scene
+              key="scorecards"
+              component={ScorecardsListView}
+              icon={TabBarIcon}
+              titleStyle={styles.titleStyle}
+              title="Scorecards" />
+            <Scene
+              key="play"
+              icon={TabBarIcon}
+              titleStyle={styles.titleStyle}
+              title="Play Golf">
+                <Scene key="chooseClub" title="Choose Club" component={ClubSelectionView} />
+                <Scene key="chooseCourse" title="Choose Course" component={CourseSelectionView} />
+            </Scene>
+          </Scene>
+        </Scene>
+        <Scene key="playModal" hideTabBar hideNavBar direction="vertical" component={RoundView} />
+      </Router>
     );
   }
 }
@@ -69,7 +85,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#777'
   },
-  titleSelected: {}
+  tabBar: {
+    backgroundColor: 'white',
+    borderTopWidth: 1,
+    borderTopColor: 'lightgrey',
+    height: 64
+  }
 });
 
 AppRegistry.registerComponent('Golftracker', () => Golftracker);
