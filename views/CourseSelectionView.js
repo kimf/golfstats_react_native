@@ -4,10 +4,11 @@ import React, { Component, PropTypes } from 'react'
 import { StyleSheet, Text, ListView, View} from 'react-native'
 import { List, ListItem } from 'react-native-elements'
 import { Actions } from 'react-native-mobx';
+import { observer } from 'mobx-react/native'
 
 import LoadingScreen from '../views/LoadingScreen'
-import RoundView from './RoundView'
 
+@observer(['appStore'])
 class CourseSelectionView extends Component{
   constructor(props, context) {
     super(props, context);
@@ -19,13 +20,13 @@ class CourseSelectionView extends Component{
   }
 
   renderRow (rowData, sectionID) {
-    const { club } = this.props;
+    const { club, appStore } = this.props;
     return (
       <ListItem
         key={sectionID}
         title={rowData.name}
         subtitle={`${rowData.holes.length} Hål. Par: ${rowData.par}`}
-        onPress={() => Actions.playModal({club: club, course: rowData})}
+        onPress={() => appStore.startPlaying(club, rowData)}
       />
     )
   }

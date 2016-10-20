@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
-import { AppRegistry, StyleSheet, View, Text } from 'react-native';
+import { AppRegistry, StyleSheet, View, Text, AsyncStorage } from 'react-native';
 import { Icon } from 'react-native-elements'
-
-import {Router, Scene, Modal, Reducer} from 'react-native-mobx';
+import { Router, Scene, Modal, Reducer, ActionConst } from 'react-native-mobx';
+import { create } from 'mobx-persist'
+import { Provider } from 'mobx-react/native'
 
 import ScorecardsListView from './views/ScorecardsListView'
 import SummariesView from './views/SummariesView'
 import ClubSelectionView from './views/ClubSelectionView'
 import CourseSelectionView from './views/CourseSelectionView'
-import RoundView from './views/RoundView'
+import ScoringRoot from './views/Scoring/ScoringRoot'
 
+import AppStore from './mobx/AppStore'
+const persistStore = create({ storage: AsyncStorage })
+const appStore = persistStore('store', AppStore)
 
-const reducerCreate = params=>{
-    const defaultReducer = Reducer(params);
-    return (state, action)=>{
-        console.log("ACTION:", action);
-        return defaultReducer(state, action);
-    }
-};
-
+import { startLogging }from './mobx/logger'
+// startLogging()
 
 const TabBarIcon = (props) => {
   const { selected, sceneKey, title } = props
@@ -45,8 +43,8 @@ const TabBarIcon = (props) => {
 class Golftracker extends Component{
   render() {
     return (
-      <Router createReducer={reducerCreate}>
-        <Scene key="modal" component={Modal} >
+      <Provider appStore={appStore}>
+        <Router>
           <Scene key="root" tabs tabBarStyle={styles.tabBar}>
             <Scene
               key="summaries"
@@ -68,11 +66,15 @@ class Golftracker extends Component{
               title="Play Golf">
                 <Scene key="chooseClub" title="Choose Club" component={ClubSelectionView} />
                 <Scene key="chooseCourse" title="Choose Course" component={CourseSelectionView} />
+                <Scene
+                  key="playModal"
+                  hideTabBar
+                  hideNavBar
+                  component={ScoringRoot} />
             </Scene>
           </Scene>
-        </Scene>
-        <Scene key="playModal" hideTabBar hideNavBar direction="vertical" component={RoundView} />
-      </Router>
+        </Router>
+      </Provider>
     );
   }
 }

@@ -1,12 +1,11 @@
 'use strict';
 
 import React, { Component, PropTypes } from 'react'
-import { StyleSheet, Text, ListView, View} from 'react-native'
+import { StyleSheet, Text, ListView, View, AsyncStorage } from 'react-native'
 import { List, ListItem, SearchBar } from 'react-native-elements'
 import { Actions } from 'react-native-router-flux'
 
 import LoadingScreen from '../views/LoadingScreen'
-import CourseSelectionView from './CourseSelectionView'
 
 var REQUEST_URL = 'http://golfstats.fransman.se/tisdagsgolfendata'
 
@@ -27,16 +26,29 @@ class ClubSelectionView extends Component{
 
 
   fetchData() {
-    fetch(REQUEST_URL)
-      .then((response) => response.json())
-      .then((responseData) => {
+    AsyncStorage.getItem('ClubStore').then(value => {
+      if (value !== null){
+        // We have data!!
+        const clubs = JSON.parse(value);
         this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData.clubs),
-          originalJSON: responseData.clubs,
+          dataSource: this.state.dataSource.cloneWithRows(clubs),
+          originalJSON: clubs,
           loaded: true,
         });
-      })
-      .done();
+      } else {
+        fetch(REQUEST_URL)
+          .then((response) => response.json())
+          .then((responseData) => {
+            this.setState({
+              dataSource: this.state.dataSource.cloneWithRows(responseData.clubs),
+              originalJSON: responseData.clubs,
+              loaded: true,
+            });
+            AsyncStorage.setItem('ClubStore', JSON.stringify(responseData.clubs));
+          })
+          .done();
+      }
+    })
   }
 
   componentDidMount() {

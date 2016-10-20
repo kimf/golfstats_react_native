@@ -1,15 +1,26 @@
 'use strict';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Button } from 'react-native-elements'
+import { observer } from 'mobx-react/native'
 
-
-class SummariesView extends View{
+@observer(['appStore'])
+class SummariesView extends Component {
   render() {
+    const { appStore } = this.props;
     return (
       <View style={styles.loading}>
         <Text style={styles.text}>
-          SUMMARIES
+          SUMMARIES GOES HERE
         </Text>
+        {appStore.isPlaying
+          ? <Button raised
+              backgroundColor="green"
+              icon={{name: 'ios-play', type: 'ionicon'}}
+              title='RESUME ROUND'
+              onPress={() => appStore.resumePlaying() }
+            />
+          : null}
       </View>
     );
   }

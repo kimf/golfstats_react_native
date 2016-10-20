@@ -25,7 +25,7 @@
    #else
      // Run on device with code coming from a server reachable on the network
      // (change the IP to your PCs IP or use dns proxies)
-     jsCodeLocation = [NSURL URLWithString:@"http://calces.local:8081/index.ios.bundle?platform=ios&dev=true"];
+     jsCodeLocation = [NSURL URLWithString:@"http://192.168.0.3:8081/index.ios.bundle?platform=ios&dev=true"];
    #endif
  #else
     jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
