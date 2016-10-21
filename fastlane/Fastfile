@@ -49,7 +49,7 @@ platform :ios do
   lane :upload_to_appetize do
     build_and_upload_to_appetize(
       xcodebuild: {
-        workspace: "Simple Golfstats.xcodeproj/project.xcworkspace",
+        workspace: "ios/Simple Golfstats.xcodeproj/project.xcworkspace",
         scheme: "Golftracker"
       }
     )

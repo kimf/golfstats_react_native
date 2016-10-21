@@ -2,7 +2,7 @@ puts "Running fastlane to generate and upload an ipa file..."
 
 options = {
   xcodebuild: {
-      workspace: "Simple Golfstats.xcodeproject/project.xcworkspace",
+      workspace: "ios/Simple Golfstats.xcodeproject/project.xcworkspace",
       scheme: "Golftracker"
     }
 }
