@@ -59,7 +59,8 @@ platform :ios do
       xcodebuild: {
         workspace: "ios/Simple Golfstats.xcodeproj/project.xcworkspace",
         scheme: "Golftracker"
-      }
+      },
+      api_token: ENV['APPETIZE_API_TOKEN']
     )
   end
 
