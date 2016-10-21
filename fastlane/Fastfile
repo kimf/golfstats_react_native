@@ -30,8 +30,16 @@ platform :ios do
   lane :beta do
     # match(type: "appstore") # more information: https://codesigning.guide
     gym(scheme: "Simple Golfstats") # Build your app - more options available
+    increment_build_number
+
     pilot
 
+    clean_build_artifacts
+    commit_version_bump(
+      message: "👷 Deployed new version #{lane_context[SharedValues::BUILD_NUMBER]} [skip ci]"
+    )
+    add_git_tag
+    push_to_git_remote
     # sh "your_script.sh"
     # You can also use other beta testing services here (run `fastlane actions`)
   end
