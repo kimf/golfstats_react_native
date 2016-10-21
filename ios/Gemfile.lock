@@ -39,6 +39,8 @@ GEM
       kramdown (~> 1.5)
       octokit (~> 4.2)
       terminal-table (~> 1)
+    danger-device_grid (0.1.2)
+      fastlane (>= 1.94.0, < 2.0.0)
     deliver (1.14.2)
       credentials_manager (>= 0.16.1, < 1.0.0)
       fastimage (~> 1.6)
@@ -272,6 +274,7 @@ PLATFORMS
 
 DEPENDENCIES
   danger
+  danger-device_grid
   fastlane
 
 BUNDLED WITH
